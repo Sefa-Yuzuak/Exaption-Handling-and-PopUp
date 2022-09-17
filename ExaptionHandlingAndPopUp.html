@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exaption Handling and PopUp</title>
+</head>
+<body>
+    <input type="number" id="user_value">
+    <button id="user_submit" onclick="myFunction()">submit</button>
+    <p id="display_submit"></p>
+
+    <script>
+        let myFunction= function(){
+            var getValue, displayValue;
+            getValue= document.getElementById('user_value').value;              
+            displayValue= document.getElementById('display_submit');
+            displayValue.innerHTML='' 
+
+            try{
+                if(getValue=='') throw window.confirm('Please Enter A Number')
+                if(getValue<=5) throw window.confirm('Number should be bigger than 5')
+                if(getValue>=15) throw window.confirm('Number should be smaller than 15')
+            }
+            catch(e){
+                 e.message='error here!'
+                
+            }
+            finally{
+                getValue.innerText=''
+            }
+
+
+        }
+    </script>
+</body>
+</html>
